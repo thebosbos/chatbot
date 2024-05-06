@@ -29,7 +29,7 @@ bnb_4bit_quant_type = "nf4"
 # Activate nested quantization for 4-bit base models (double quantization)
 use_nested_quant = False
 # Load the entire model on the GPU 0
-device_map = {"": 0}
+
 model_name="bosbos/llama3finetune"
 # Load tokenizer and model with QLoRA configuration
 
@@ -39,7 +39,7 @@ model_name="bosbos/llama3finetune"
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     
-    device_map=device_map
+   
 )
 model.config.use_cache = False
 model.config.pretraining_tp = 1
