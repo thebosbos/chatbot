@@ -32,18 +32,13 @@ use_nested_quant = False
 device_map = {"": 0}
 model_name="bosbos/llama3finetune"
 # Load tokenizer and model with QLoRA configuration
-compute_dtype = getattr(torch, bnb_4bit_compute_dtype)
 
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=use_4bit,
-    bnb_4bit_quant_type=bnb_4bit_quant_type,
-    bnb_4bit_compute_dtype=compute_dtype,
-    bnb_4bit_use_double_quant=use_nested_quant,
-)
+
+
 # Load base model
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    quantization_config=bnb_config,
+    
     device_map=device_map
 )
 model.config.use_cache = False
