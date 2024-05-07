@@ -61,7 +61,8 @@ def hello():
     return 'Hello, World!'
 
 if __name__ == '__main__':
-      db.init_app(app)
+    app = Flask(__name__)
+    db.init_app(app)
 
     app.register_blueprint(main)
 
