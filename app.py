@@ -13,11 +13,11 @@ model_name="bosbos/llama3finetune"
 
 
 
-model = AutoModel.from_pretrained("/path/to/your/model")
+model = AutoModel.from_pretrained(model_name)
 
 
 
-tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased")
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 
 
