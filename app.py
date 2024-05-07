@@ -1,36 +1,30 @@
 from flask import Flask, request
 import torch
+
 from transformers import (
-    AutoModelForCausalLM,
+    AutoModel,
     AutoTokenizer,
-    Trainer,
-    HfArgumentParser,
     pipeline,
+    transformers
+
 )
-import transformers
-
-
 
 model_name="bosbos/llama3finetune"
 
 
-# Load base model
-model = AutoModelForCausalLM.from_pretrained(
-    model_name,
- 
-)
-model.config.use_cache = False
-model.config.pretraining_tp = 1
 
-tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
-tokenizer.pad_token = tokenizer.eos_token
-tokenizer.padding_side = "right"
+model = AutoModel.from_pretrained("/path/to/your/model")
+
+
+
+tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased")
+
+
 
 pipeline = transformers.pipeline(
     "text-generation",
     model=model,
     tokenizer=tokenizer,
-    model_kwargs={"torch_dtype": torch.bfloat16},
 
 )
 
