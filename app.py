@@ -5,7 +5,7 @@ from transformers import (
     AutoModel,
     AutoTokenizer,
     pipeline,
-    transformers
+    
 
 )
 import transformers
