@@ -61,9 +61,5 @@ def hello():
     return 'Hello, World!'
 
 if __name__ == '__main__':
-    app = Flask(__name__)
-    db.init_app(app)
-
-    app.register_blueprint(main)
-
-    return app
+    port = int(os.environ.get('PORT', 5000))  # Get port from environment variable or use default 5000
+    app.run(debug=True, host='0.0.0.0', port=port)  # Explicitly set host and port
