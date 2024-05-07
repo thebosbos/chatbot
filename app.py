@@ -61,4 +61,8 @@ def hello():
     return 'Hello, World!'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+      db.init_app(app)
+
+    app.register_blueprint(main)
+
+    return app
